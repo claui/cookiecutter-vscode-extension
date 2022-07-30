@@ -1,0 +1,22 @@
+{
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "files.associations": {
+    "**/?? cookiecutter.project_slug ??/**/*.json": "jinja-json",
+    "**/?? cookiecutter.project_slug ??/**/*.md": "jinja-md",
+    "**/?? cookiecutter.project_slug ??/**/*.ts": "jinja-js",
+    "**/hooks/*_gen_project.py": "jinja-py"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.venv": true,
+    "**/__pycache__": true
+  },
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.formatting.provider": "black",
+  "python.linting.pylintEnabled": true
+}

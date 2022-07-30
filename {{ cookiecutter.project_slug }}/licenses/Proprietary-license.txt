@@ -1,0 +1,2 @@
+Copyright (c) {% now 'local', '%Y' %} {{ cookiecutter.copyright_holder_full_name }}
+All rights reserved.

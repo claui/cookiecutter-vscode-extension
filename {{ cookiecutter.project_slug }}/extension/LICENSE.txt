@@ -1,0 +1,5 @@
+{% if cookiecutter.extension_license == "Apache-2.0" -%}
+{% include 'licenses/Apache-2.0-license.txt' %}
+{%- elif cookiecutter.extension_license == "Proprietary" -%}
+{% include 'licenses/Proprietary-license.txt' %}
+{%- endif -%}

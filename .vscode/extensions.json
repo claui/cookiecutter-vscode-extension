@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "ms-python.python",
+    "samuelcolvin.jinjahtml",
+    "tamasfe.even-better-toml"
+  ]
+}

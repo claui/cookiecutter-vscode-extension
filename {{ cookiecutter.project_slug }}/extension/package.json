@@ -1,0 +1,64 @@
+{
+  "name": "{{ cookiecutter.extension_slug }}",
+  "version": "{{ cookiecutter.extension_version }}",
+  {%- if cookiecutter.publish_on_visual_studio_marketplace == "y" %}
+  "publisher": "{{ cookiecutter.marketplace_publisher_id }}",
+  {%- endif %}
+  "engines": {
+    "vscode": "^{{ cookiecutter.vscode_engine_min_version }}"
+  },
+  "license": "SEE LICENSE IN README.md",
+  "displayName": "{{ cookiecutter.extension_display_name }}",
+  "description": "{{ cookiecutter.extension_description }}",
+  "categories": [],
+  "keywords": [],
+  "preview": true,
+  "main": "out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "{{ cookiecutter.extension_slug }}.action.showLog",
+        "title": "{{ cookiecutter.extension_display_name }}: Show extension log"
+      }
+    ],
+    "configuration": {
+      "title": "{{ cookiecutter.extension_display_name }}",
+      "properties": {
+        "{{ cookiecutter.extension_slug }}.executablePath": {
+          "type": "string",
+          "markdownDescription": "Path to the `foo` executable, e. g. `/usr/local/bin/foo`.  \nLeave blank if it’s already on your `PATH`.",
+          "scope": "machine-overridable"
+        }
+      }
+    },
+    "configurationDefaults": {}
+    {%- if cookiecutter.contribute_language == "y" %},
+    "grammars": [
+      {
+        "language": "{{ cookiecutter.first_language_slug }}",
+        "scopeName": "{{ cookiecutter.first_language_scope_group }}.{{ cookiecutter.first_language_slug }}",
+        "path": "share/{{ cookiecutter.first_language_slug }}.tmLanguage.json"
+      }
+    ],
+    "languages": [
+      {
+        "id": "{{ cookiecutter.first_language_slug }}",
+        "aliases": [
+          "{{ cookiecutter.first_language_display_name }}"
+        ],
+        "filenamePatterns": [
+          "{{ cookiecutter.first_language_filename_pattern }}"
+        ],
+        "configuration": "share/language-configuration.json"
+      }
+    ]
+    {%- endif %}
+  },
+  "activationEvents": [
+    "onLanguage:{{ cookiecutter.first_language_slug }}"
+  ],
+  "extensionKind": [
+    "workspace"
+  ],
+  "repository": "github:{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
+}

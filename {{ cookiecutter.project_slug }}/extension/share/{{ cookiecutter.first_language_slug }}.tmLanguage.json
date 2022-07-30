@@ -1,0 +1,15 @@
+{
+  "name": "{{ cookiecutter.first_language_display_name }}",
+  "scopeName": "{{ cookiecutter.first_language_scope_group }}.{{ cookiecutter.first_language_slug }}",
+  "uuid": "{{ uuidgen() }}",
+  "patterns": [
+    {
+      "include": "#root"
+    }
+  ],
+  "repository": {
+    "root": {
+      "patterns": []
+    }
+  }
+}
