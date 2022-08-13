@@ -113,6 +113,10 @@ To update your dependencies after a `git pull`, run `poetry update`.
 
 To see a list of available tasks, run: `poetry run poe tasks`
 
+## Running the end-to-end test
+
+To execute the end-to-end test, run: `poetry run poe e2e`
+
 ## FAQ
 
 Q: Why is `pyenv` required even though Cookiecutter accepts any
