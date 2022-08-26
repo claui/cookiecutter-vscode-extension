@@ -10,6 +10,7 @@ def print_formatted(message: str) -> None:
 
 commands = [
     'yarn set version {{ cookiecutter.yarn_version }}',
+    'yarn plugin import https://mskelton.dev/yarn-outdated/v3',
     'yarn install',
 ]
 

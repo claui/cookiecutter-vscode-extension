@@ -16,7 +16,7 @@
     {%- if cookiecutter.publish_on_visual_studio_marketplace == "y" %}
     "login": "vsce login {{ cookiecutter.marketplace_publisher_id }}",
     {%- endif %}
-    "package": "cd extension && vsce package --no-dependencies --yarn --githubBranch main/extension",
+    "package": "tsc -p extension/ && cd extension && vsce package --no-dependencies --yarn --githubBranch main/extension",
     "postinstall": "yarn sdks vscode",
     "publish": "cd extension && vsce publish --no-dependencies --yarn --githubBranch main/extension",
     "upgrade-all": "printf >&2 '%s\\n\\t%s\\n' 'Run the following command line manually:' 'yarn set version stable && yarn upgrade-packages' && false",
