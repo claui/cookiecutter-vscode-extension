@@ -1,10 +1,16 @@
 import {
   ExtensionContext,
+{%- if cookiecutter.contribute_language == "y" %}
   LanguageStatusItem,
+{%- endif %}
   commands,
+{%- if cookiecutter.contribute_language == "y" %}
   languages,
+{%- endif %}
   window,
+{%- if cookiecutter.contribute_language == "y" %}
   DocumentSelector,
+{%- endif %}
 } from "vscode";
 
 import Logger from "./logger";
@@ -33,7 +39,7 @@ const log: Logger = {
   },
 };
 
-{%- if cookiecutter.contribute_language == "y" %}
+{% if cookiecutter.contribute_language == "y" -%}
 const statusItem: LanguageStatusItem = languages.createLanguageStatusItem(
   "{{ cookiecutter.first_language_slug }}.status.item",
   languageSelector
@@ -44,10 +50,12 @@ export function activate(context: ExtensionContext) {
   commands.registerCommand("{{ cookiecutter.extension_slug }}.action.showLog", () => {
     outputChannel.show();
   });
+{%- if cookiecutter.contribute_language == "y" %}
   statusItem.command = {
     command: "{{ cookiecutter.extension_slug }}.action.showLog",
     title: "Show extension log",
   };
+{%- endif %}
 
   return {};
 }

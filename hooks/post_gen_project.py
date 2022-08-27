@@ -3,6 +3,11 @@ import subprocess
 
 shutil.rmtree('licenses')
 
+{%- if cookiecutter.contribute_language == "n" %}
+shutil.rmtree('extension/examples')
+shutil.rmtree('extension/share')
+{%- endif %}
+
 {%- if cookiecutter.install_dependencies_now == "y" %}
 def print_formatted(message: str) -> None:
     width = max((len(line) for line in message))
