@@ -36,7 +36,7 @@ Use `yarn package` as long as the issue is unresolved.
 
 ## Publishing the extension
 
-{%- if cookiecutter.publish_on_visual_studio_marketplace == "y" %}
+{% if cookiecutter.publish_on_visual_studio_marketplace == "y" -%}
 To publish to the VS Code Extension Marketplace, first choose a target version.  
 [The VS Code folks recommend](https://code.visualstudio.com/api/working-with-extensions/publishing-extension#prerelease-extensions) the following numbering scheme:
 
