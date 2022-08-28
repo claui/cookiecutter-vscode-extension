@@ -3,7 +3,6 @@
   "extension_slug": "{{ cookiecutter.extension_display_name.lower().replace(' ', '-').replace('_', '-') }}",
   "project_slug": "vscode-{{ cookiecutter.extension_slug }}",
   "extension_description": "",
-  "extension_version": "0.2.0",
   "extension_license": ["Apache-2.0", "Proprietary"],
   "vscode_engine_min_version": "1.69.0",
   "contribute_language": "y",
