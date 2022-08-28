@@ -1,5 +1,6 @@
 """End-to-end test"""
 
+import subprocess
 from tempfile import mkdtemp
 
 from cookiecutter.main import cookiecutter
@@ -8,7 +9,7 @@ from .settings import PROJECT_ROOT
 
 def run() -> None:
     """Runs the end-to-end test."""
-    result = cookiecutter(
+    target_path_name = cookiecutter(
         str(PROJECT_ROOT),
         no_input=True,
         output_dir=mkdtemp(suffix=".e2e", prefix="cookiecutter."),
@@ -19,4 +20,5 @@ def run() -> None:
             "extension_license": "Proprietary",
         },
     )
-    print(result)
+    print(target_path_name)
+    subprocess.run("yarn package", check=True, cwd=target_path_name, shell=True)
