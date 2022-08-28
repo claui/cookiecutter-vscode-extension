@@ -5,7 +5,7 @@
   "publisher": "{{ cookiecutter.marketplace_publisher_id }}",
   {%- endif %}
   "engines": {
-    "vscode": "^{{ cookiecutter.vscode_engine_min_version }}"
+    "vscode": "^{{ cookiecutter.vscode_engine_min_version_tuple }}"
   },
   "license": "SEE LICENSE IN README.md",
   "displayName": "{{ cookiecutter.extension_display_name }}",
