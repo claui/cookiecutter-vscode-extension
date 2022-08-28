@@ -54,7 +54,7 @@
     ]
     {%- endif %}
   },
-  {%- if cookiecutter.contribute_language == "y" %},
+  {%- if cookiecutter.contribute_language == "y" %}
   "activationEvents": [
     "onLanguage:{{ cookiecutter.first_language_slug }}"
   ],
