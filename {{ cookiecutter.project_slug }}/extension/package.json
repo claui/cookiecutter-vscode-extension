@@ -1,6 +1,6 @@
 {
   "name": "{{ cookiecutter.extension_slug }}",
-  "version": "{{ cookiecutter.extension_version }}",
+  "version": "0.1.0-snapshot",
   {%- if cookiecutter.publish_on_visual_studio_marketplace == "y" %}
   "publisher": "{{ cookiecutter.marketplace_publisher_id }}",
   {%- endif %}
