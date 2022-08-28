@@ -177,7 +177,6 @@ For a copy of the License, see [LICENSE](LICENSE).
 ### Additional license files
 
 This project may include additional license files other than the
-Apache License. Those are just there for the template user’s
-convenience so they can choose a license for their own content.
-Those licenses may not apply to this project. The only license
-that applies to this project is the Apache License.
+Apache License. Those are part of the template, which means they may
+not apply to this project. The only license that applies to this
+project is the Apache License.
