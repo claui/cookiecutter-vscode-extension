@@ -9,13 +9,13 @@ shutil.rmtree('extension/share')
 {%- endif %}
 
 git_commands = [
-    'git init',
+    'git init -q',
     'git add .',
     {%- if cookiecutter.contribute_language == "y" %}
-    'git reset extension/examples extension/share',
+    'git reset -q extension/examples extension/share',
     'git add -N extension/examples extension/share',
     {%- endif %}
-    'git reset extension/README.md',
+    'git reset -q extension/README.md',
     'git add -N extension/README.md',
 ]
 
