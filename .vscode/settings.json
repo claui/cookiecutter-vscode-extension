@@ -16,7 +16,6 @@
     "**/.venv": true,
     "**/__pycache__": true
   },
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
   "python.formatting.provider": "black",
   "python.linting.pylintEnabled": true
 }
