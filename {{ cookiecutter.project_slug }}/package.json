@@ -2,28 +2,32 @@
   "name": "{{ cookiecutter.project_slug }}",
   "license": "SEE LICENSE IN README.md",
   "devDependencies": {
-    "@types/node": "^18.7.13",
+    "@types/node": "^18.11.18",
     "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
+    "@vscode/vsce": "^2.16.0",
     "@yarnpkg/sdks": "^2.6.3",
-    "eslint": "^8.23.0",
-    "ovsx": "^0.5.1",
-    "semver": "^7.3.7",
-    "typescript": "^4.8.2",
-    "vsce": "^2.10.2"
+    "eslint": "^8.32.0",
+    "ovsx": "^0.8.0",
+    "semver": "^7.3.8",
+    "typescript": "^4.9.4"
   },
   "scripts": {
     "clean-install": "yarn install && git checkout -- .vscode/settings.json '.yarn/*/LICENSE'",
     "compile": "tsc -p extension/",
     {%- if cookiecutter.publish_on_visual_studio_marketplace == "y" %}
-    "login": "vsce login {{ cookiecutter.marketplace_publisher_id }}",
+    "login": "yarn run -B vsce login {{ cookiecutter.marketplace_publisher_id }}",
     {%- endif %}
-    "package": "tsc -p extension/ && cd extension && vsce package --no-dependencies --yarn --githubBranch main/extension",
+    "package": "tsc -p extension/ && yarn run -B vsce package --no-dependencies --yarn --cwd extension --githubBranch main/extension",
     "postinstall": "yarn sdks vscode",
-    "publish-vsce": "cd extension && vsce publish --no-dependencies --yarn --githubBranch main/extension",
+    "publish-vsce": "yarn run -B vsce publish --no-dependencies --yarn --cwd extension --githubBranch main/extension",
+    "repatch": "git add -- package.json && yarn patch-commit -s \"$1\" && git checkout -- package.json && yarn clean-install",
     "upgrade-all": "printf >&2 '%s\\n\\t%s\\n' 'Run the following command line manually:' 'yarn set version stable && yarn install && yarn upgrade-packages' && false",
     "upgrade-lockfile": "yarn up -R '**' && yarn clean-install",
     "upgrade-packages": "yarn up '**' '@types/vscode@={{ cookiecutter.vscode_engine_min_version_tuple }}' && yarn up -R '**' && yarn clean-install",
     "upgrade-yarn-itself": "printf >&2 '%s\\n\\t%s\\n' 'Run the following command line manually:' 'yarn set version stable && yarn install && yarn clean-install' && false",
     "vscode:prepublish": "yarn compile"
+  },
+  "resolutions": {
+    "@vscode/vsce@^2.16.0": "patch:@vscode/vsce@npm:2.16.0#./.yarn/patches/@vscode-vsce-npm-2.16.0-c171711221.patch"
   }
 }

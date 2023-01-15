@@ -209,6 +209,45 @@ To bump the minimum supported VS Code version, follow these steps:
 
 4. Run `yarn clean-install`.
 
+## Patching dependencies
+
+Sometimes you may want to tweak a dependency. This section explains how to do that using `yarn patch`.
+
+### Start editing
+
+To start editing a dependency, run `yarn patch <dependency>`.
+
+For example, to start editing the `vsce` executable, run:
+
+```shell
+yarn patch yarn patch @vscode/vsce@npm:2.16.0
+```
+
+Since this project is already patching this dependency, you may want to apply the existing patch to the temporary working directory:
+
+```shell
+patch < path/to/this/project/.yarn/patches/@vscode-vsce-npm-2.16.0-c171711221.patch
+```
+
+### Finish editing
+
+To commit the patch, run `yarn repatch -- <workdir>`.
+
+For example, if the temporary working directory is `/tmp/xfs-36e26fe6/user`, run:
+
+```shell
+yarn repatch -- /tmp/xfs-36e26fe6/user
+```
+
+Note: `yarn repatch` is a custom script. It serves to work around two issues in `yarn patch-commit`:
+
+- Using bare `yarn patch-commit` would create a nested patch while amending the patch is what I actually want.
+
+- It may also use an incorrect key in the resolution entry it writes to `package.json`.  
+  The key should match the dependency’s semver expression, not the resolved version.
+  Using the latter as a key causes the resolution to never apply.  
+  Example for a correct key: `"@vscode/vsce@^2.16.0"`
+
 ## Handling vulnerable dependencies
 
 ### The thing about vulnerabilities in transitive dependencies
