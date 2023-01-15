@@ -4,12 +4,12 @@
   "devDependencies": {
     "@types/node": "^18.7.13",
     "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
+    "@vscode/vsce": "^2.16.0",
     "@yarnpkg/sdks": "^2.6.3",
     "eslint": "^8.23.0",
-    "ovsx": "=0.5.1",
+    "ovsx": "^0.8.0",
     "semver": "^7.3.7",
-    "typescript": "^4.8.2",
-    "vsce": "=2.14.0"
+    "typescript": "^4.8.2"
   },
   "scripts": {
     "clean-install": "yarn install && git checkout -- .vscode/settings.json '.yarn/*/LICENSE'",
@@ -28,6 +28,6 @@
     "vscode:prepublish": "yarn compile"
   },
   "resolutions": {
-    "vsce@=2.14.0": "patch:vsce@npm:2.14.0#./.yarn/patches/vsce-npm-2.14.0-c875d1964f.patch"
+    "@vscode/vsce@^2.16.0": "patch:@vscode/vsce@npm:2.16.0#./.yarn/patches/@vscode-vsce-npm-2.16.0-c171711221.patch"
   }
 }
