@@ -220,7 +220,7 @@ To start editing a dependency, run `yarn patch <dependency>`.
 For example, to start editing the `vsce` executable, run:
 
 ```shell
-yarn patch yarn patch @vscode/vsce@npm:2.16.0
+yarn patch @vscode/vsce@npm:2.16.0
 ```
 
 Since this project is already patching this dependency, you may want to apply the existing patch to the temporary working directory:
