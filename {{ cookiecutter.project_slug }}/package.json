@@ -6,6 +6,7 @@
     "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
     "@vscode/vsce": "^2.17.0",
     "@yarnpkg/sdks": "^2.6.3",
+    "del-cli": "^5.0.0",
     "esbuild": "^0.17.3",
     "eslint": "^8.32.0",
     "ovsx": "^0.8.0",
@@ -14,12 +15,13 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
+    "clean": "yarn run -B del extension/dist extension/work \"extension/*.vsix\"",
     "clean-install": "yarn install && git checkout -- .vscode/settings.json '.yarn/*/LICENSE'",
     "compile": "tsc -p extension/ && yarn run esbuild --bundle --external:vscode --outdir=./extension/dist/ --platform=node ./extension/work/tsc-out/extension.js",
     {%- if cookiecutter.publish_on_visual_studio_marketplace == "y" %}
     "login": "yarn run -B vsce login {{ cookiecutter.marketplace_publisher_id }}",
     {%- endif %}
-    "package": "yarn compile && yarn run -B vsce package --no-dependencies --yarn --cwd extension --githubBranch main/extension",
+    "package": "yarn clean && yarn compile && yarn run -B vsce package --no-dependencies --yarn --cwd extension --githubBranch main/extension",
     "postinstall": "yarn sdks vscode",
     "publish-vsce": "yarn run -B vsce publish --no-dependencies --yarn --cwd extension --githubBranch main/extension",
     "repatch": "git add -- package.json && yarn patch-commit -s \"$1\" && git checkout -- package.json && yarn clean-install",
@@ -27,7 +29,7 @@
     "upgrade-lockfile": "yarn up -R '**' && yarn clean-install",
     "upgrade-packages": "yarn up '**' '@types/vscode@={{ cookiecutter.vscode_engine_min_version_tuple }}' && yarn up -R '**' && yarn clean-install",
     "upgrade-yarn-itself": "printf >&2 '%s\\n\\t%s\\n' 'Run the following command line manually:' 'yarn set version stable && yarn install && yarn clean-install' && false",
-    "vscode:prepublish": "yarn compile"
+    "vscode:prepublish": "yarn clean && yarn compile"
   },
   "resolutions": {
     "@vscode/vsce@^2.17.0": "patch:@vscode/vsce@npm:2.17.0#./.yarn/patches/@vscode-vsce-npm-2.17.0-c171711221.patch"
