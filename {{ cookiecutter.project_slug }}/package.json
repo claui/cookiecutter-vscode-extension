@@ -4,7 +4,7 @@
   "devDependencies": {
     "@types/node": "^18.11.18",
     "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
-    "@vscode/vsce": "^2.16.0",
+    "@vscode/vsce": "^2.17.0",
     "@yarnpkg/sdks": "^2.6.3",
     "eslint": "^8.32.0",
     "ovsx": "^0.8.0",
@@ -28,6 +28,6 @@
     "vscode:prepublish": "yarn compile"
   },
   "resolutions": {
-    "@vscode/vsce@^2.16.0": "patch:@vscode/vsce@npm:2.16.0#./.yarn/patches/@vscode-vsce-npm-2.16.0-c171711221.patch"
+    "@vscode/vsce@^2.17.0": "patch:@vscode/vsce@npm:2.17.0#./.yarn/patches/@vscode-vsce-npm-2.17.0-c171711221.patch"
   }
 }
