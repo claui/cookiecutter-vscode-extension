@@ -15,6 +15,9 @@
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "eslint.nodePath": ".yarn/sdks",
+  "files.exclude": {
+    "**/.git": true
+  },
   "json.schemas": [
     {
       "fileMatch": [
