@@ -6,6 +6,7 @@
     "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
     "@vscode/vsce": "^2.17.0",
     "@yarnpkg/sdks": "^2.6.3",
+    "esbuild": "^0.17.3",
     "eslint": "^8.32.0",
     "ovsx": "^0.8.0",
     "semver": "^7.3.8",
@@ -14,11 +15,11 @@
   },
   "scripts": {
     "clean-install": "yarn install && git checkout -- .vscode/settings.json '.yarn/*/LICENSE'",
-    "compile": "tsc -p extension/",
+    "compile": "tsc -p extension/ && yarn run esbuild --bundle --external:vscode --outdir=./extension/dist/ --platform=node ./extension/work/tsc-out/extension.js",
     {%- if cookiecutter.publish_on_visual_studio_marketplace == "y" %}
     "login": "yarn run -B vsce login {{ cookiecutter.marketplace_publisher_id }}",
     {%- endif %}
-    "package": "tsc -p extension/ && yarn run -B vsce package --no-dependencies --yarn --cwd extension --githubBranch main/extension",
+    "package": "yarn compile && yarn run -B vsce package --no-dependencies --yarn --cwd extension --githubBranch main/extension",
     "postinstall": "yarn sdks vscode",
     "publish-vsce": "yarn run -B vsce publish --no-dependencies --yarn --cwd extension --githubBranch main/extension",
     "repatch": "git add -- package.json && yarn patch-commit -s \"$1\" && git checkout -- package.json && yarn clean-install",
