@@ -18,6 +18,7 @@ def run() -> None:
             "first_language_display_name": "Flubberfile",
             "first_language_filename_pattern": "*.flub",
             "extension_license": "Proprietary",
+            "marketplace_publisher_id": "end_to_end_test",
         },
     )
     print(target_path_name)

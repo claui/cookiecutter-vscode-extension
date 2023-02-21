@@ -1,4 +1,4 @@
-**/*.vsix
+/extension/build
 /extension/dist
 /extension/work
 /.pnp.*

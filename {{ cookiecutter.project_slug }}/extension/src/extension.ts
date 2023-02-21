@@ -33,7 +33,7 @@ const log: Logger = {
   info: function (...args) {
     this.log("INFO", ...args);
   },
-  log: function (level: string, ...args: any[]) {
+  log: function (level: string, ...args: unknown[]) {
     const timestamp = getCurrentTimestamp();
     outputChannel.appendLine(`${timestamp} [${level}] ${args.join(" ")}`);
   },
@@ -60,4 +60,6 @@ export function activate(context: ExtensionContext) {
   return {};
 }
 
-export function deactivate() {}
+export function deactivate() {
+  return undefined;
+}

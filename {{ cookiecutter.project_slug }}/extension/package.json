@@ -1,9 +1,7 @@
 {
   "name": "{{ cookiecutter.extension_slug }}",
   "version": "0.1.0-snapshot",
-  {%- if cookiecutter.publish_on_visual_studio_marketplace == "y" %}
   "publisher": "{{ cookiecutter.marketplace_publisher_id }}",
-  {%- endif %}
   "engines": {
     "vscode": "^{{ cookiecutter.vscode_engine_min_version_tuple }}.0"
   },
@@ -13,7 +11,7 @@
   "categories": [],
   "keywords": [],
   "preview": true,
-  "main": "dist/extension.js",
+  "main": "build/extension.js",
   "contributes": {
     "commands": [
       {
@@ -54,11 +52,6 @@
     ]
     {%- endif %}
   },
-  {%- if cookiecutter.contribute_language == "y" %}
-  "activationEvents": [
-    "onLanguage:{{ cookiecutter.first_language_slug }}"
-  ],
-  {%- endif %}
   "extensionKind": [
     "workspace"
   ],

@@ -27,10 +27,11 @@
     }
   ],
   "search.exclude": {
-    "/.yarn": true,
-    "/.pnp.*": true,
+    "/extension/build": true,
     "/extension/dist": true,
     "/extension/out": true,
+    "**/.yarn": true,
+    "**/.pnp.*": true
   },
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsdk": ".yarn/sdks/typescript/lib"
