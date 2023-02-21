@@ -27,6 +27,7 @@
     }
   ],
   "search.exclude": {
+    "/extension/build": true,
     "/extension/dist": true,
     "/extension/out": true,
     "**/.yarn": true,

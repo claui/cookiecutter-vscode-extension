@@ -15,13 +15,14 @@
     "typescript": "^4.9.5"
   },
   "scripts": {
-    "clean": "yarn run -B del extension/dist extension/work \"extension/*.vsix\"",
+    "ci-package": "mkdir -p extension/dist && yarn run -B vsce package --no-dependencies --yarn --cwd extension --githubBranch main/extension --out extension/dist",
+    "clean": "yarn run -B del extension/build extension/dist extension/work",
     "clean-install": "yarn install && git checkout -- .vscode/settings.json '.yarn/*/LICENSE'",
-    "compile": "tsc -p extension/ && yarn run esbuild --bundle --external:vscode --outdir=./extension/dist/ --platform=node ./extension/work/tsc-out/extension.js",
+    "compile": "tsc -p extension/ && yarn run esbuild --bundle --external:vscode --outdir=./extension/build/ --platform=node ./extension/work/tsc-out/extension.js",
     {%- if cookiecutter.publish_on_visual_studio_marketplace == "y" %}
     "login": "yarn run -B vsce login {{ cookiecutter.marketplace_publisher_id }}",
     {%- endif %}
-    "package": "yarn clean && yarn compile && yarn run -B vsce package --no-dependencies --yarn --cwd extension --githubBranch main/extension",
+    "package": "yarn clean && yarn compile && yarn ci-package",
     "postinstall": "yarn sdks vscode",
     "publish-vsce": "yarn run -B vsce publish --no-dependencies --yarn --cwd extension --githubBranch main/extension",
     "repatch": "git add -- package.json && yarn patch-commit -s \"$1\" && git checkout -- package.json && yarn clean-install",

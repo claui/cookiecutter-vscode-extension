@@ -13,7 +13,7 @@
   "categories": [],
   "keywords": [],
   "preview": true,
-  "main": "dist/extension.js",
+  "main": "build/extension.js",
   "contributes": {
     "commands": [
       {
