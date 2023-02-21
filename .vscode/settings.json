@@ -16,6 +16,7 @@
     "**/.venv": true,
     "**/__pycache__": true
   },
+  "python.analysis.typeCheckingMode": "strict",
   "python.formatting.provider": "black",
   "python.linting.pylintEnabled": true
 }
