@@ -55,5 +55,6 @@
   "extensionKind": [
     "workspace"
   ],
+  "activationEvents": [],
   "repository": "github:{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
 }
