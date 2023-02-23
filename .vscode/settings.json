@@ -1,4 +1,9 @@
 {
+  "[jinja-js]": {
+    "editor.rulers": [
+      80
+    ]
+  },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
@@ -7,6 +12,9 @@
   },
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "files.associations": {
     "**/?? cookiecutter.project_slug ??/.vscode/*.json": "jsonc",
@@ -25,5 +33,11 @@
   },
   "python.analysis.typeCheckingMode": "strict",
   "python.formatting.provider": "black",
-  "python.linting.pylintEnabled": true
+  "python.linting.enabled": true,
+  "python.linting.pylintArgs": [
+    "--enable-all-extensions"
+  ],
+  "python.linting.pylintCategorySeverity.refactor": "Warning",
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintPath": "pylint"
 }

@@ -167,8 +167,9 @@ The built-in `yarn up` command can be a bit cumbersome to use if you
 want to upgrade all dependencies in one go.
 
 Running the `yarn upgrade-packages` script will upgrade all relevant
-dependencies. That includes the `@types` and `@yarnpkg` scopes but
-excludes Yarn itself (see the `yarn upgrade-yarn-itself` section).
+dependencies. That includes the `@types`, `@typescript-eslint`, and
+`@yarnpkg` scopes but excludes Yarn itself (see the
+`yarn upgrade-yarn-itself` section).
 
 Also excluded is the `@types/vscode` package. For details, see
 section _Upgrading the VS Code API_.
