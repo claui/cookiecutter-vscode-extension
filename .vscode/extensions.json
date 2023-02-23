@@ -1,6 +1,8 @@
 {
   "recommendations": [
+    "davidanson.vscode-markdownlint",
     "editorconfig.editorconfig",
+    "henrynguyen5-vsc.vsc-nvm",
     "ms-python.python",
     "samuelcolvin.jinjahtml",
     "tamasfe.even-better-toml"

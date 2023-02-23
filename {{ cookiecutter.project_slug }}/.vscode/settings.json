@@ -6,7 +6,7 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "vscode.json-language-features",
     "editor.rulers": [
       80
     ]
