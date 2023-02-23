@@ -2,8 +2,10 @@
   "name": "{{ cookiecutter.project_slug }}",
   "license": "SEE LICENSE IN README.md",
   "devDependencies": {
-    "@types/node": "^18.14.0",
+    "@types/node": "^18.14.1",
     "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "@vscode/vsce": "^2.17.0",
     "@yarnpkg/sdks": "^2.6.3",
     "del-cli": "^5.0.0",
@@ -19,6 +21,7 @@
     "clean": "yarn run -B del extension/build extension/dist extension/work",
     "clean-install": "yarn install && git checkout -- .vscode/settings.json '.yarn/*/LICENSE'",
     "compile": "tsc -p extension/ && yarn run esbuild --bundle --external:vscode --outdir=./extension/build/ --platform=node ./extension/work/tsc-out/extension.js",
+    "lint": "yarn run -B eslint --max-warnings 0 extension/src",
     {%- if cookiecutter.publish_on_visual_studio_marketplace == "y" %}
     "login": "yarn run -B vsce login {{ cookiecutter.marketplace_publisher_id }}",
     {%- endif %}
