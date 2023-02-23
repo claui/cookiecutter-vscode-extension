@@ -20,6 +20,9 @@
     "**/.venv": true,
     "**/__pycache__": true
   },
+  "markdownlint.config": {
+    "MD033": false
+  },
   "python.analysis.typeCheckingMode": "strict",
   "python.formatting.provider": "black",
   "python.linting.pylintEnabled": true

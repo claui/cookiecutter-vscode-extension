@@ -26,6 +26,9 @@
       "url": "https://raw.githubusercontent.com/Septh/tmlanguage/master/tmlanguage.json"
     }
   ],
+  "markdownlint.config": {
+    "MD033": false
+  },
   "search.exclude": {
     "/extension/build": true,
     "/extension/dist": true,
