@@ -1,5 +1,6 @@
 /extension/build/
 /extension/dist/
+/extension/types/
 /extension/work/
 /.pnp.*
 /.yarn/*

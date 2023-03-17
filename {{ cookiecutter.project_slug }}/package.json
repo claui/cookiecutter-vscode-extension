@@ -1,24 +1,28 @@
 {
   "name": "{{ cookiecutter.project_slug }}",
   "license": "SEE LICENSE IN README.md",
+  "engines": {
+    "node": "^16.0.0"
+  },
   "devDependencies": {
-    "@types/node": "^18.14.1",
+    "@types/node": "^16.11.7",
     "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
-    "@typescript-eslint/eslint-plugin": "^5.53.0",
-    "@typescript-eslint/parser": "^5.53.0",
-    "@vscode/vsce": "^2.17.0",
-    "@yarnpkg/sdks": "^2.6.3",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
+    "@vscode/vsce": "^2.18.0",
+    "@yarnpkg/sdks": "^2.7.0",
     "del-cli": "^5.0.0",
-    "esbuild": "^0.17.10",
-    "eslint": "^8.34.0",
+    "esbuild": "^0.17.12",
+    "eslint": "^8.36.0",
     "ovsx": "^0.8.0",
     "semver": "^7.3.8",
+    "source-map-support": "^0.5.21",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.2"
   },
   "scripts": {
     "ci-package": "mkdir -p extension/dist && yarn run -B vsce package --no-dependencies --yarn --cwd extension --githubBranch main/extension --out extension/dist",
-    "clean": "yarn run -B del extension/build extension/dist extension/work",
+    "clean": "yarn run -B del extension/build extension/dist extension/types extension/work",
     "clean-install": "yarn install && git checkout -- .vscode/settings.json '.yarn/*/LICENSE'",
     "compile": "tsc -p extension/ && yarn run esbuild --bundle --external:vscode --outdir=./extension/build/ --platform=node ./extension/work/tsc-out/extension.js",
     "lint": "yarn run -B eslint --max-warnings 0 extension/src",
@@ -36,6 +40,6 @@
     "vscode:prepublish": "yarn clean && yarn compile"
   },
   "resolutions": {
-    "@vscode/vsce@^2.17.0": "patch:@vscode/vsce@npm:2.17.0#./.yarn/patches/@vscode-vsce-npm-2.17.0-c171711221.patch"
+    "@vscode/vsce@^2.18.0": "patch:@vscode/vsce@npm:2.18.0#./.yarn/patches/@vscode-vsce-npm-2.18.0-c171711221.patch"
   }
 }

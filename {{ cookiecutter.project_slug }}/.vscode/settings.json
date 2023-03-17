@@ -41,7 +41,7 @@
   "search.exclude": {
     "/extension/build": true,
     "/extension/dist": true,
-    "/extension/out": true,
+    "/extension/work": true,
     "**/.yarn": true,
     "**/.pnp.*": true
   },
