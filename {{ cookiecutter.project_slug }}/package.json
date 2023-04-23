@@ -9,7 +9,7 @@
     "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
-    "@vscode/vsce": "^2.18.0",
+    "@vscode/vsce": "^2.19.0",
     "@yarnpkg/sdks": "<=2.x || ^3.0.0",
     "del-cli": "^5.0.0",
     "esbuild": "^0.17.12",
@@ -40,6 +40,6 @@
     "vscode:prepublish": "yarn clean && yarn compile"
   },
   "resolutions": {
-    "@vscode/vsce@^2.18.0": "patch:@vscode/vsce@npm:2.18.0#./.yarn/patches/@vscode-vsce-npm-2.18.0-c171711221.patch"
+    "@vscode/vsce@^2.19.0": "patch:@vscode/vsce@npm:2.19.0#./.yarn/patches/@vscode-vsce-npm-2.19.0-c171711221.patch"
   }
 }
