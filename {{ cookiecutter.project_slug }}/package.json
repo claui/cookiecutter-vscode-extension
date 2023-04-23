@@ -5,12 +5,12 @@
     "node": "^16.0.0"
   },
   "devDependencies": {
-    "@types/node": "^16.11.7",
+    "@types/node": "<=16.x",
     "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
     "@typescript-eslint/parser": "^5.55.0",
     "@vscode/vsce": "^2.18.0",
-    "@yarnpkg/sdks": "^2.7.0",
+    "@yarnpkg/sdks": "<=2.x || ^3.0.0",
     "del-cli": "^5.0.0",
     "esbuild": "^0.17.12",
     "eslint": "^8.36.0",
@@ -35,7 +35,7 @@
     "repatch": "git add -- package.json && yarn patch-commit -s \"$1\" && git checkout -- package.json && yarn clean-install",
     "upgrade-all": "printf >&2 '%s\\n\\t%s\\n' 'Run the following command line manually:' 'yarn set version stable && yarn install && yarn upgrade-packages' && false",
     "upgrade-lockfile": "yarn up -R '**' && yarn clean-install",
-    "upgrade-packages": "yarn up '**' '@types/vscode@={{ cookiecutter.vscode_engine_min_version_tuple }}' && yarn up -R '**' && yarn clean-install",
+    "upgrade-packages": "yarn up '**' '@types/node@<=16.x' '@types/vscode@={{ cookiecutter.vscode_engine_min_version_tuple }}' '@yarnpkg/sdks@<=2.x || ^3.0.0' && yarn up -R '**' && yarn clean-install",
     "upgrade-yarn-itself": "printf >&2 '%s\\n\\t%s\\n' 'Run the following command line manually:' 'yarn set version stable && yarn install && yarn clean-install' && false",
     "vscode:prepublish": "yarn clean && yarn compile"
   },
