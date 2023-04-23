@@ -107,7 +107,7 @@ To set up your virtual environment, follow these steps:
 
 You need to do the above steps only once.
 
-To update your dependencies after a `git pull`, run `poetry update`.
+To update your dependencies after a `git pull`, run `poetry install`.
 
 ## Development scripts and tasks
 
