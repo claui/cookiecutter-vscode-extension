@@ -24,3 +24,4 @@ def run() -> None:
     print(target_path_name)
     subprocess.run("yarn lint", check=True, cwd=target_path_name, shell=True)
     subprocess.run("yarn package", check=True, cwd=target_path_name, shell=True)
+    subprocess.run("yarn outdated", check=True, cwd=target_path_name, shell=True)
