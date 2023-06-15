@@ -4,6 +4,15 @@
   "engines": {
     "node": "^16.0.0"
   },
+  "comments": {
+    "devDependencies": {
+      "@types/node": "Keep this pinned to the Node.js major version that ships with VS Code.",
+      "@types/vscode": "For details, see section *Upgrading the VS Code API version* in `README.md`."
+    },
+    "resolutions": {
+      "@vscode/vsce": "Private patch for Yarn v3 compatibility. Keep in sync with the version of the `@vscode/vsce` dependency."
+    }
+  },
   "devDependencies": {
     "@types/node": "<=16.x",
     "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
