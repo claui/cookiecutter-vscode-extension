@@ -22,7 +22,7 @@
     "@vscode/vsce": "^2.19.0",
     "@yarnpkg/sdks": "<=2.x || ^3.0.0",
     "del-cli": "^5.0.0",
-    "esbuild": "^0.17.12",
+    "esbuild": "^0.18.3",
     "eslint": "^8.36.0",
     "ovsx": "^0.8.0",
     "semver": "^7.3.8",
@@ -34,7 +34,7 @@
     "ci-package": "mkdir -p extension/dist && yarn run -B vsce package --no-dependencies --yarn --cwd extension --githubBranch main/extension --out extension/dist",
     "clean": "yarn run -B del extension/build extension/dist extension/types extension/work",
     "clean-install": "yarn install && git checkout -- .vscode/settings.json '.yarn/*/LICENSE'",
-    "compile": "tsc -p extension/ && yarn run esbuild --bundle --external:vscode --outdir=./extension/build/ --platform=node ./extension/work/tsc-out/extension.js",
+    "compile": "tsc -p extension/ && yarn run esbuild --bundle --external:vscode --outdir=./extension/build/ --platform=node --target=es2022 ./extension/work/tsc-out/extension.js",
     "lint": "yarn run -B eslint --max-warnings 0 extension/src",
     {%- if cookiecutter.publish_on_visual_studio_marketplace == "y" %}
     "login": "yarn run -B vsce login {{ cookiecutter.marketplace_publisher_id }}",
