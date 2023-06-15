@@ -2,6 +2,9 @@ import {
   commands,
 {%- if cookiecutter.contribute_language == "y" %}
   DocumentSelector,
+{%- endif %}
+  ExtensionContext,
+{%- if cookiecutter.contribute_language == "y" %}
   languages,
   LanguageStatusItem,
 {%- endif %}
@@ -18,7 +21,7 @@ const statusItem: LanguageStatusItem = languages.createLanguageStatusItem(
 );
 {%- endif %}
 
-export function activate() {
+export function activate(context: ExtensionContext) {
   commands.registerCommand("{{ cookiecutter.extension_slug }}.action.showLog", log.show, log);
 {%- if cookiecutter.contribute_language == "y" %}
   statusItem.command = {
@@ -27,7 +30,8 @@ export function activate() {
   };
 {%- endif %}
 
-  log.info("Extension startup successful");
+  const version = context.extension.packageJSON.version as string;
+  log.info(`Extension v${version} startup successful`);
   return {};
 }
 
