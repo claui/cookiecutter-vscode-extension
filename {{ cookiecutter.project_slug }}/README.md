@@ -112,7 +112,7 @@ With the extension now published on the Marketplace, commit the
 change, create a tag, push, cut a GitHub (pre-)release, and create a
 pull request against `main`:
 
-```
+```bash
 (
   set -eux
   git checkout -b publish

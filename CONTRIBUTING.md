@@ -36,7 +36,7 @@ at [github.com/pyenv/pyenv](https://github.com/pyenv/pyenv#basic-github-checkout
 
 To install `pyenv` on macOS, run:
 
-```
+```shell
 brew install pyenv
 ```
 
@@ -44,7 +44,7 @@ brew install pyenv
 
 To verify `pyenv` is working, run:
 
-```
+```shell
 pyenv --version
 ```
 
@@ -71,7 +71,7 @@ described in Poetry’s documentation.
 
 To install Poetry on macOS, run:
 
-```
+```shell
 brew install poetry
 ```
 
@@ -79,7 +79,7 @@ brew install poetry
 
 To verify Poetry is working, run:
 
-```
+```shell
 poetry --version
 ```
 

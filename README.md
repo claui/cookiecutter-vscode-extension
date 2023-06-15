@@ -116,13 +116,13 @@ and available in your PATH.
 
 To check, run:
 
-```
+```shell
 python --version
 ```
 
 If that fails, try:
 
-```
+```shell
 python3 --version
 ```
 
@@ -138,7 +138,7 @@ instructions](https://cookiecutter.readthedocs.io/en/stable/installation.html).
 To run the template generator, make sure you have a working
 Cookiecutter installation. Then run:
 
-```
+```shell
 cookiecutter gh:claui/cookiecutter-vscode-extension
 ```
 
@@ -147,14 +147,14 @@ cookiecutter gh:claui/cookiecutter-vscode-extension
 If you use `cookiecutter-vscode-extension` often, you can add to your
 `.cookiecutterrc` an `abbreviations` section like so:
 
-```
+```yaml
 abbreviations:
     vscode: https://github.com/claui/cookiecutter-vscode-extension.git
 ```
 
 Then, to generate a project, run:
 
-```
+```shell
 cookiecutter vscode
 ```
 
