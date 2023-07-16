@@ -25,7 +25,8 @@
   "eslint.format.enable": true,
   "eslint.nodePath": ".yarn/sdks",
   "files.exclude": {
-    "**/.git": true
+    "**/.git": true{% if cookiecutter.dedicated_library_workspace == "y" %},
+    "**/{{ cookiecutter.extension_slug }}/lib": true{% endif %}
   },
   "json.schemas": [
     {
@@ -41,7 +42,13 @@
   "search.exclude": {
     "/extension/build": true,
     "/extension/dist": true,
+    "/extension/types": true,
     "/extension/work": true,
+    {%- if cookiecutter.dedicated_library_workspace == "y" %}
+    "/{{ cookiecutter.extension_slug }}/build": true,
+    "/{{ cookiecutter.extension_slug }}/dist": true,
+    "/{{ cookiecutter.extension_slug }}/types": true,
+    {%- endif %}
     "**/.yarn": true,
     "**/.pnp.*": true
   },

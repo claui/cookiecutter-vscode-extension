@@ -6,49 +6,37 @@
   },
   "comments": {
     "devDependencies": {
-      "@types/node": "Keep this pinned to the Node.js major version that ships with VS Code.",
-      "@types/vscode": "For details, see section *Upgrading the VS Code API version* in `README.md`."
+      "@yarnpkg/sdks": "Replace the <=2.x || ^3.0.0 restriction with the latest stable version once a stable 3.x release is out."
     },
     "resolutions": {
       "@vscode/vsce": "Private patch for Yarn v3 compatibility. Keep in sync with the version of the `@vscode/vsce` dependency."
     }
   },
   "devDependencies": {
-    "@types/node": "<=16.x",
-    "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "@vscode/vsce": "^2.19.0",
+    "@types/jest": "^29.5.3",
     "@yarnpkg/sdks": "<=2.x || ^3.0.0",
-    "del-cli": "^5.0.0",
-    "esbuild": "^0.18.3",
-    "eslint": "^8.36.0",
-    "ovsx": "^0.8.0",
-    "semver": "^7.3.8",
-    "source-map-support": "^0.5.21",
-    "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
-  },
-  "scripts": {
-    "ci-package": "mkdir -p extension/dist && yarn run -B vsce package --no-dependencies --yarn --cwd extension --githubBranch main/extension --out extension/dist",
-    "clean": "yarn run -B del extension/build extension/dist extension/types extension/work",
-    "clean-install": "yarn install && git checkout -- .vscode/settings.json '.yarn/*/LICENSE'",
-    "compile": "tsc -p extension/ && yarn run esbuild --bundle --external:vscode --outdir=./extension/build/ --platform=node --target=es2022 ./extension/work/tsc-out/extension.js",
-    "lint": "yarn run -B eslint --max-warnings 0 extension/src",
-    {%- if cookiecutter.publish_on_visual_studio_marketplace == "y" %}
-    "login": "yarn run -B vsce login {{ cookiecutter.marketplace_publisher_id }}",
-    {%- endif %}
-    "package": "yarn clean && yarn compile && yarn ci-package",
-    "postinstall": "yarn sdks vscode",
-    "publish-vsce": "yarn run -B vsce publish --no-dependencies --yarn --cwd extension --githubBranch main/extension",
-    "repatch": "git add -- package.json && yarn patch-commit -s \"$1\" && git checkout -- package.json && yarn clean-install",
-    "upgrade-all": "printf >&2 '%s\\n\\t%s\\n' 'Run the following command line manually:' 'yarn set version stable && yarn install && yarn upgrade-packages' && false",
-    "upgrade-lockfile": "yarn up -R '**' && yarn clean-install",
-    "upgrade-packages": "yarn up '**' '@types/node@<=16.x' '@types/vscode@={{ cookiecutter.vscode_engine_min_version_tuple }}' '@yarnpkg/sdks@<=2.x || ^3.0.0' && yarn up -R '**' && yarn clean-install",
-    "upgrade-yarn-itself": "printf >&2 '%s\\n\\t%s\\n' 'Run the following command line manually:' 'yarn set version stable && yarn install && yarn clean-install' && false",
-    "vscode:prepublish": "yarn clean && yarn compile"
   },
   "resolutions": {
     "@vscode/vsce@^2.19.0": "patch:@vscode/vsce@npm:2.19.0#./.yarn/patches/@vscode-vsce-npm-2.19.0-c171711221.patch"
-  }
+  },
+  "scripts": {
+    "clean": "yarn workspace extension clean{% if cookiecutter.dedicated_library_workspace == "y" %} && yarn workspace {{ cookiecutter.extension_slug }} clean{% endif %}",
+    "clean-install": "yarn install && git checkout -- .vscode/settings.json '.yarn/*/LICENSE'",
+    "compile": "{% if cookiecutter.dedicated_library_workspace == "y" %}yarn workspace {{ cookiecutter.extension_slug }} compile && {% endif %}yarn workspace extension compile",
+    "lint": "{% if cookiecutter.dedicated_library_workspace == "y" %}yarn workspace {{ cookiecutter.extension_slug }} lint && {% endif %}yarn workspace extension lint",
+    "package": "{% if cookiecutter.dedicated_library_workspace == "y" %}yarn workspace {{ cookiecutter.extension_slug }} compile && {% endif %}yarn workspace extension package",
+    "postinstall": "yarn sdks vscode",
+    {%- if cookiecutter.dedicated_library_workspace == "y" %}
+    "test": "yarn workspace {{ cookiecutter.extension_slug }} test",
+    {%- endif %}
+    "upgrade-all": "printf >&2 '%s\\n\\t%s\\n' 'Run the following command line manually:' 'yarn set version stable && yarn install && yarn upgrade-packages' && false",
+    "upgrade-lockfile": "yarn up -R '**' && yarn clean-install",
+    "upgrade-packages": "yarn up '**' '@types/node@<=16.x' '@types/vscode@={{ cookiecutter.vscode_engine_min_version_tuple }}' '@yarnpkg/sdks@<=2.x || ^3.0.0' && yarn up -R '**' && yarn clean-install",
+    "upgrade-yarn-itself": "printf >&2 '%s\\n\\t%s\\n' 'Run the following command line manually:' 'yarn set version stable && yarn install && yarn clean-install' && false"
+  },
+  "workspaces": [
+    "extension"{% if cookiecutter.dedicated_library_workspace == "y" %},
+    "{{ cookiecutter.extension_slug }}"{% endif %}
+  ]
 }

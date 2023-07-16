@@ -1,60 +1,48 @@
 {
-  "name": "{{ cookiecutter.extension_slug }}",
-  "version": "0.1.0-snapshot",
-  "publisher": "{{ cookiecutter.marketplace_publisher_id }}",
-  "engines": {
-    "vscode": "^{{ cookiecutter.vscode_engine_min_version_tuple }}.0"
-  },
+  "name": "extension",
   "license": "SEE LICENSE IN README.md",
-  "displayName": "{{ cookiecutter.extension_display_name }}",
-  "description": "{{ cookiecutter.extension_description }}",
-  "categories": [],
-  "keywords": [],
-  "preview": true,
-  "main": "build/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "{{ cookiecutter.extension_slug }}.action.showLog",
-        "title": "{{ cookiecutter.extension_display_name }}: Show extension log"
-      }
-    ],
-    "configuration": {
-      "title": "{{ cookiecutter.extension_display_name }}",
-      "properties": {
-        "{{ cookiecutter.extension_slug }}.executablePath": {
-          "type": "string",
-          "markdownDescription": "Path to the `foo` executable, e. g. `/usr/local/bin/foo`.  \nLeave blank if it’s already on your `PATH`.",
-          "scope": "machine-overridable"
-        }
-      }
+  "comments": {
+    "dependencies": {
+      "@js-temporal/polyfill": "Remove this dependency once VS Code comes with a version of Node.js that has adopted TC39’s Temporal proposal."
     },
-    "configurationDefaults": {}
-    {%- if cookiecutter.contribute_language == "y" %},
-    "grammars": [
-      {
-        "language": "{{ cookiecutter.first_language_slug }}",
-        "scopeName": "{{ cookiecutter.first_language_scope_group }}.{{ cookiecutter.first_language_slug }}",
-        "path": "share/{{ cookiecutter.first_language_slug }}.tmLanguage.json"
-      }
-    ],
-    "languages": [
-      {
-        "id": "{{ cookiecutter.first_language_slug }}",
-        "aliases": [
-          "{{ cookiecutter.first_language_display_name }}"
-        ],
-        "filenamePatterns": [
-          "{{ cookiecutter.first_language_filename_pattern }}"
-        ],
-        "configuration": "share/language-configuration.json"
-      }
-    ]
-    {%- endif %}
+    "devDependencies": {
+      "@types/node": "Keep this pinned to the Node.js major version that ships with VS Code.",
+      "@types/vscode": "For details, see section *Upgrading the VS Code API version* in `README.md`."
+    }
   },
-  "extensionKind": [
-    "workspace"
-  ],
-  "activationEvents": [],
-  "repository": "github:{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
+  "dependencies": {
+    {%- if cookiecutter.dedicated_library_workspace == "y" %}
+    "{{ cookiecutter.extension_slug }}": "workspace:^",
+    {%- endif %}
+    "@js-temporal/polyfill": "^0.4.4"
+  },
+  "devDependencies": {
+    "@types/node": "<=16.x",
+    "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vscode/vsce": "^2.19.0",
+    "del-cli": "^5.0.0",
+    "esbuild": "^0.18.12",
+    "esbuild-copy-static-files": "^0.1.0",
+    "eslint": "^8.45.0",
+    "ovsx": "^0.8.2",
+    "semver": "^7.5.4",
+    "source-map-support": "^0.5.21",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  },
+  "scripts": {
+    "ci-package": "mkdir -p dist && yarn run -B vsce package --no-dependencies --yarn --cwd build --githubBranch main/extension --out dist",
+    "clean": "yarn run -B del build dist types work",
+    "compile": "yarn run -B tsc && contrib/build.mjs",
+    "lint": "yarn run -B eslint --max-warnings 0 src",
+    {%- if cookiecutter.publish_on_visual_studio_marketplace == "y" %}
+    "login": "yarn run -B vsce login {{ cookiecutter.marketplace_publisher_id }}",
+    {%- endif %}
+    "package": "yarn clean && yarn compile && yarn ci-package",
+    "publish-vsce": "yarn run -B vsce publish --no-dependencies --yarn --cwd build --githubBranch main/extension",
+    "repatch": "git add -- package.json && yarn patch-commit -s \"$1\" && git checkout -- package.json && yarn clean-install",
+    "vscode:prepublish": "yarn clean && yarn compile"
+  }
 }

@@ -26,5 +26,5 @@ trim_trailing_whitespace = false
 [*.ts]
 indent_size = 2
 
-[*.yml]
+[*.{yaml,yml}]
 indent_size = 2

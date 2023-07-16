@@ -5,15 +5,26 @@ extends:
   - plugin:@typescript-eslint/recommended-type-checked
   - plugin:@typescript-eslint/stylistic-type-checked
 ignorePatterns:
-  - build/
-  - work/
+  - lib/
+  - types/
+overrides:
+  - files: "**/*.test.ts"
+    env:
+      jest/globals: true
+    plugins:
+      - jest
+    parserOptions:
+      project:
+        - tsconfig.linting.json
+    rules:
+      max-lines-per-function: 0
 parser: "@typescript-eslint/parser"
 parserOptions:
   ecmaFeatures:
     impliedStrict: true
   ecmaVersion: 2022
   project:
-    - extension/tsconfig.json
+    - tsconfig.json
 plugins:
   - "@typescript-eslint"
 root: true

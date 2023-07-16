@@ -1,3 +1,4 @@
+import os
 import shutil
 import subprocess
 
@@ -5,18 +6,27 @@ shutil.rmtree('licenses')
 
 {%- if cookiecutter.contribute_language == "n" %}
 shutil.rmtree('extension/examples')
-shutil.rmtree('extension/share')
+os.remove('extension/share/{{ cookiecutter.first_language_slug }}.tmLanguage.json')
+os.remove('extension/share/language-configuration.json')
+{%- endif %}
+
+{%- if cookiecutter.dedicated_library_workspace == "n" %}
+shutil.rmtree('./{{ cookiecutter.extension_slug }}')
 {%- endif %}
 
 git_commands = [
     'git init -q',
     'git add .',
     {%- if cookiecutter.contribute_language == "y" %}
-    'git reset -q extension/examples extension/share',
-    'git add -N extension/examples extension/share',
+    'git reset -q extension/examples extension/share/*.json',
+    'git add -N extension/examples extension/share/*.json',
     {%- endif %}
     'git reset -q extension/README.md',
     'git add -N extension/README.md',
+    {%- if cookiecutter.dedicated_library_workspace == "y" %}
+    'git reset -q {{ cookiecutter.extension_slug }}/src {{ cookiecutter.extension_slug }}/test',
+    'git add -N {{ cookiecutter.extension_slug }}/src {{ cookiecutter.extension_slug }}/test',
+    {%- endif %}
 ]
 
 for git_command in git_commands:

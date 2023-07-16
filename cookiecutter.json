@@ -10,6 +10,7 @@
   "first_language_slug": "{{ cookiecutter.first_language_display_name.lower().replace(' ', '-').replace('_', '-') }}",
   "first_language_filename_pattern": "*.{{ cookiecutter.first_language_slug }}",
   "first_language_scope_group": ["source", "text"],
+  "dedicated_library_workspace": "y",
   "author_full_name": "",
   "copyright_holder_full_name": "{{ cookiecutter.author_full_name }}",
   "publish_on_visual_studio_marketplace": "y",
