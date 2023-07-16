@@ -16,8 +16,8 @@
   "devDependencies": {
     "@types/node": "<=16.x",
     "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
-    "@typescript-eslint/eslint-plugin": "^5.55.0",
-    "@typescript-eslint/parser": "^5.55.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
     "@vscode/vsce": "^2.19.0",
     "@yarnpkg/sdks": "<=2.x || ^3.0.0",
     "del-cli": "^5.0.0",
