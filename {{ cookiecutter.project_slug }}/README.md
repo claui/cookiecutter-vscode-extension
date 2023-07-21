@@ -339,6 +339,7 @@ whose root has a license file on its own.
 
 ## License header
 
+{% set _ = cookiecutter.update({ "_license_filename": "LICENSE" }) -%}
 {% if cookiecutter.extension_license == "Apache-2.0" -%}
 {% include 'licenses/Apache-2.0-reference.md' %}
 {%- elif cookiecutter.extension_license == "Proprietary" -%}
