@@ -19,5 +19,6 @@
   "install_dependencies_now": "y",
   "_extensions": [
     "local_extensions.CustomFunctionsExtension"
-  ]
+  ],
+  "_license_filename": ""
 }

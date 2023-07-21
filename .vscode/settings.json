@@ -29,6 +29,8 @@
     "**/.venv": true,
     "**/__pycache__": true
   },
+  "jest.autoRevealOutput": "off",
+  "jest.autoRun": "off",
   "markdownlint.config": {
     "MD033": false
   },
