@@ -68,16 +68,18 @@ the following numbering scheme:
 
 ### Publishing to the Marketplace
 
-After deciding on a target version, run:
+After deciding on a target version, edit the
+`extension/share/dist/package.json` manifest to reflect the new
+version.
+
+Then run:
 
 - `git checkout main`
-- `yarn login`
-- `yarn publish-vsce [--pre-release] [version]`
+- `yarn workspace extension login`
+- `yarn workspace extension publish-vsce [--pre-release]`
 
-The `yarn publish-vsce` command first updates the version number in
-[extension/package.json](./extension/package.json) to the given
-version. Then it packages and publishes the extension to the VS Code
-Extension Marketplace.
+The final `yarn […] publish-vsce` command packages and publishes the
+extension to the VS Code Extension Marketplace.
 
 ### Publishing to the Open VSX Registry
 
@@ -97,13 +99,16 @@ Follow these steps to publish the extension to the Open VSX Registry:
 
 2. Make sure you have published the extension to the VS Code
    Extension Marketplace. This ensures that the version number has
-   been updated and that a `.vsix` file has been generated.
+   been updated.
 
-3. Run the `yarn ovsx publish` command with the correct
-   `extension/[…].vsix` file as the sole argument. Example in Bash:
+3. Run `yarn package` to generate a `.vsix` package.
+
+4. Run the `yarn […] ovsx publish` command with the correct
+   `extension/dist/[…].vsix` file as the sole argument.  
+   Example in Bash:
 
    ```bash
-   yarn ovsx publish "extension/{{ cookiecutter.extension_slug }}-$(jq -r .version extension/package.json).vsix"
+   yarn workspace extension ovsx publish "dist/{{ cookiecutter.extension_slug }}-$(jq -r .version extension/share/dist/package.json).vsix"
    ```
 
 ### Committing, tagging and creating a GitHub prerelease and PR
@@ -116,13 +121,13 @@ pull request against `main`:
 (
   set -eux
   git checkout -b publish
-  tag="$(jq -r '"v" + .version' extension/package.json)"
+  tag="$(jq -r '"v" + .version' extension/share/dist/package.json)"
   echo "New tag: ${tag}"
   git add -u
   git commit --edit -m "Release ${tag}"
   git tag "${tag}"
   git push --tags
-  gh release create --generate-notes --prerelease "${tag}"
+  gh release create --draft --generate-notes --prerelease "${tag}"
   gh pr create --fill --web
 )
 ```
