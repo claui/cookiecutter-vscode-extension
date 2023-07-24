@@ -14,6 +14,12 @@ await esbuild.build({
       src: 'share/dist/',
       dest: 'build/',
     }),
+    {%- if cookiecutter.contribute_language == "y" %}
+    copyStaticFiles({
+      src: 'share/language/',
+      dest: 'build/language/',
+    }),
+    {%- endif %}
     copyStaticFiles({
       src: 'LICENSE.txt',
       dest: 'build/LICENSE.txt',
