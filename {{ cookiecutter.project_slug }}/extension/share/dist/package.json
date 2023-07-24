@@ -35,7 +35,7 @@
       {
         "language": "{{ cookiecutter.first_language_slug }}",
         "scopeName": "{{ cookiecutter.first_language_scope_group }}.{{ cookiecutter.first_language_slug }}",
-        "path": "share/{{ cookiecutter.first_language_slug }}.tmLanguage.json"
+        "path": "language/{{ cookiecutter.first_language_slug }}.tmLanguage.json"
       }
     ],
     "languages": [
@@ -47,7 +47,7 @@
         "filenamePatterns": [
           "{{ cookiecutter.first_language_filename_pattern }}"
         ],
-        "configuration": "share/language-configuration.json"
+        "configuration": "language/language-configuration.json"
       }
     ]
     {%- endif %}

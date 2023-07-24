@@ -20,6 +20,7 @@
     "**/?? cookiecutter.project_slug ??/.vscode/*.json": "jsonc",
     "**/?? cookiecutter.project_slug ??/**/*.json": "jinja-json",
     "**/?? cookiecutter.project_slug ??/**/*.md": "jinja-md",
+    "**/?? cookiecutter.project_slug ??/**/*.mjs": "jinja-js",
     "**/?? cookiecutter.project_slug ??/**/*.ts": "jinja-js",
     "**/hooks/*_gen_project.py": "jinja-py"
   },
