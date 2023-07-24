@@ -68,15 +68,18 @@ the following numbering scheme:
 
 ### Publishing to the Marketplace
 
-After deciding on a target version, edit the
-`extension/share/dist/package.json` manifest to reflect the new
-version.
+1. Check out the `main` branch and make sure it is pristine.
 
-Then run:
+2. Decide on a new version number under which to publish the package.
 
-- `git checkout main`
-- `yarn workspace extension login`
-- `yarn workspace extension publish-vsce [--pre-release]`
+3. Edit the `extension/share/dist/package.json` manifest to reflect
+   the new version number.
+
+4. Run: `yarn package`
+
+5. If necessary, run: `yarn workspace extension login`
+
+6. Run: `yarn workspace extension publish-vsce [--pre-release]`
 
 The final `yarn […] publish-vsce` command packages and publishes the
 extension to the VS Code Extension Marketplace.
