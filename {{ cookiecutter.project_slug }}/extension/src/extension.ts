@@ -21,6 +21,15 @@ const statusItem: LanguageStatusItem = languages.createLanguageStatusItem(
 );
 {%- endif %}
 
+interface ExtensionPackageJson {
+  "displayName": string,
+  "version": string,
+}
+
+function packageJson(context: ExtensionContext): ExtensionPackageJson {
+  return context.extension.packageJSON as ExtensionPackageJson;
+}
+
 export function activate(context: ExtensionContext) {
   commands.registerCommand("{{ cookiecutter.extension_slug }}.action.showLog", log.show, log);
 {%- if cookiecutter.contribute_language == "y" %}
@@ -30,7 +39,7 @@ export function activate(context: ExtensionContext) {
   };
 {%- endif %}
 
-  const version = context.extension.packageJSON.version as string;
+  const { version } = packageJson(context);
   log.info(`Extension v${version} startup successful`);
   return {};
 }
