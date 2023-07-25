@@ -6,8 +6,8 @@ shutil.rmtree('licenses')
 
 {%- if cookiecutter.contribute_language == "n" %}
 shutil.rmtree('extension/examples')
-os.remove('extension/share/{{ cookiecutter.first_language_slug }}.tmLanguage.json')
-os.remove('extension/share/language-configuration.json')
+os.remove('extension/share/language/{{ cookiecutter.first_language_slug }}.tmLanguage.json')
+os.remove('extension/share/language/language-configuration.json')
 {%- endif %}
 
 {%- if cookiecutter.dedicated_library_workspace == "n" %}
@@ -18,8 +18,8 @@ git_commands = [
     'git init -q',
     'git add .',
     {%- if cookiecutter.contribute_language == "y" %}
-    'git reset -q extension/examples extension/share/*.json',
-    'git add -N extension/examples extension/share/*.json',
+    'git reset -q extension/examples extension/share/language',
+    'git add -N extension/examples extension/share/language',
     {%- endif %}
     'git reset -q extension/README.md',
     'git add -N extension/README.md',
