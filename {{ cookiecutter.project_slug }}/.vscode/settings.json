@@ -28,6 +28,9 @@
     "**/.git": true{% if cookiecutter.dedicated_library_workspace == "y" %},
     "**/{{ cookiecutter.extension_slug }}/lib": true{% endif %}
   },
+  {%- if cookiecutter.dedicated_library_workspace == "y" %}
+  "jest.jestCommandLine": "if ! type nvm > /dev/null && [ \"${NVM_DIR}\"] && [-s \"${NVM_DIR}/nvm.sh\"]; then . \"${NVM_DIR}/nvm.sh\"; nvm use; fi; node --version && yarn test",
+  {%- endif %}
   "json.schemas": [
     {
       "fileMatch": [
