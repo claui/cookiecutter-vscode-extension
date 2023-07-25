@@ -238,9 +238,13 @@ Since this project is already patching this dependency, you may want to apply th
 patch < path/to/this/project/.yarn/patches/@vscode-vsce-npm-2.19.0-c171711221.patch
 ```
 
-### Finish editing
+### Committing a patch for the first time
 
-To commit the patch, run `yarn repatch -- <workdir>`.
+To commit a patch for the first time, run `yarn patch-commit -s <workdir>`.
+
+### Modifying an existing patch
+
+To commit a modified patch, run `yarn repatch -- <workdir>`.
 
 For example, if the temporary working directory is `/tmp/xfs-36e26fe6/user`, run:
 
