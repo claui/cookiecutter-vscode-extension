@@ -229,13 +229,13 @@ To start editing a dependency, run `yarn patch <dependency>`.
 For example, to start editing the `vsce` executable, run:
 
 ```shell
-yarn patch @vscode/vsce@npm:2.21.0
+yarn patch @vscode/vsce@npm:2.21.1
 ```
 
 Since this project is already patching this dependency, you may want to apply the existing patch to the temporary working directory:
 
 ```shell
-patch < path/to/this/project/.yarn/patches/@vscode-vsce-npm-2.21.0.patch
+patch < path/to/this/project/.yarn/patches/@vscode-vsce-npm-2.21.1.patch
 ```
 
 ### Committing a patch for the first time
@@ -259,7 +259,7 @@ Note: `yarn repatch` is a custom script. It serves to work around two issues in 
 - It may also use an incorrect key in the resolution entry it writes to `package.json`.  
   The key should match the dependency’s semver expression, not the resolved version.
   Using the latter as a key causes the resolution to never apply.  
-  Example for a correct key: `"@vscode/vsce@^2.21.0"`
+  Example for a correct key: `"@vscode/vsce@^2.21.1"`
 
 ## Handling vulnerable dependencies
 
