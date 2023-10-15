@@ -18,7 +18,7 @@
     "typescript": "^5.1.6"
   },
   "resolutions": {
-    "@vscode/vsce@^2.21.0": "patch:@vscode/vsce@npm:2.21.0#./.yarn/patches/@vscode-vsce-npm-2.21.0.patch"
+    "@vscode/vsce@^2.21.1": "patch:@vscode/vsce@npm:2.21.1#./.yarn/patches/@vscode-vsce-npm-2.21.1.patch"
   },
   "scripts": {
     "clean": "yarn workspace extension clean{% if cookiecutter.dedicated_library_workspace == "y" %} && yarn workspace {{ cookiecutter.extension_slug }} clean{% endif %}",
