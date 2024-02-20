@@ -38,8 +38,10 @@ def print_formatted(message: str) -> None:
     print('', width * '-', *message, width * '-', sep='\n')
 
 install_commands = [
-    'yarn set version stable',
-    'yarn plugin import https://mskelton.dev/yarn-outdated/v3',
+    'yarn init -2',
+    'git checkout package.json',
+    'yarn set version 4',
+    'yarn plugin import https://mskelton.dev/yarn-outdated/v4',
     'yarn install',
     'yarn clean-install',
     'git add .yarn .yarnrc.yml package.json yarn.lock',
