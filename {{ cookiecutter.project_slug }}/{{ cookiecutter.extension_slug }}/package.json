@@ -1,7 +1,7 @@
 {
   "name": "{{ cookiecutter.extension_slug }}",
   "engines": {
-    "node": ">= 16.0.0"
+    "node": ">= 18.0.0"
   },
   "files": [
     "/lib/",
@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",
-    "@types/node": "<=16.x",
+    "@types/node": "<=18.x",
     "@types/tmp": "^0.2.3",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
