@@ -168,7 +168,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## License
 
-Copyright (c) 2022 Claudia Pellegrino <clau@tiqua.de>
+Copyright (c) 2022 – 2024 Claudia Pellegrino <clau@tiqua.de>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
