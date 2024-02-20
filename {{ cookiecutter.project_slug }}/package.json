@@ -2,7 +2,7 @@
   "name": "{{ cookiecutter.project_slug }}",
   "license": "SEE LICENSE IN README.md",
   "engines": {
-    "node": "^16.0.0"
+    "node": "^18.0.0"
   },
   "comments": {
     "devDependencies": {
@@ -32,7 +32,7 @@
     {%- endif %}
     "upgrade-all": "printf >&2 '%s\\n\\t%s\\n' 'Run the following command line manually:' 'yarn set version stable && yarn install && yarn upgrade-packages' && false",
     "upgrade-lockfile": "yarn up -R '**' && yarn clean-install",
-    "upgrade-packages": "yarn up '**' '@types/node@<=16.x' '@types/vscode@={{ cookiecutter.vscode_engine_min_version_tuple }}' '@yarnpkg/sdks@<=2.x || ^3.0.0' && yarn up -R '**' && yarn clean-install",
+    "upgrade-packages": "yarn up '**' '@types/node@<=18.x' '@types/vscode@={{ cookiecutter.vscode_engine_min_version_tuple }}' '@yarnpkg/sdks@<=2.x || ^3.0.0' && yarn up -R '**' && yarn clean-install",
     "upgrade-yarn-itself": "printf >&2 '%s\\n\\t%s\\n' 'Run the following command line manually:' 'yarn set version stable && yarn install && yarn clean-install' && false"
   },
   "workspaces": [
