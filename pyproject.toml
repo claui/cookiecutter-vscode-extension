@@ -27,7 +27,7 @@ black = "^22.6.0"
 #
 # We’re pinning both the major and minor version for compatibility.
 # Keep this in sync with the requirement mentioned in README.md.
-cookiecutter = "~2.1.0"
+cookiecutter = "~2.6.0"
 mypy = "^1.0.1"
 poethepoet = "^0.16.0"
 #

@@ -103,7 +103,7 @@ To use this Cookiecutter template, you need:
 
 1. A system-wide Python installation.
 
-2. Cookiecutter version 2.1 or newer.
+2. Cookiecutter version 2.6.0 or newer.
 
 3. The JavaScript version manager `nvm`.
 

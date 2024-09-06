@@ -17,8 +17,12 @@
   "marketplace_publisher_id": "",
   "github_username": "",
   "install_dependencies_now": "y",
+  "_copy_without_render": [
+    ".redport/patches/*.patch"
+  ],
   "_extensions": [
-    "local_extensions.CustomFunctionsExtension"
+    "local_extensions.CustomFunctionsExtension",
+    "local_extensions.CustomGlobalsExtension"
   ],
   "_license_filename": ""
 }

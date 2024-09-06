@@ -1,0 +1,24 @@
+{
+  "upstream": {
+    "type": "cookiecutter-template",
+    {% if template_git_remote_url -%}
+    "source": "{{ template_git_remote_url }}",
+    {%- else -%}
+    "source": "{{ cookiecutter._repo_dir }}",
+    {%- endif %}
+    {%- if template_git_commit %}
+    "commit": "{{ template_git_commit }}",
+    {%- endif %}
+    {% if template_git_remote_url -%}
+    "replay": "cookiecutter_replay/{{ template_git_remote_url.split('/')[-1] | replace('.git', '') }}.json",
+    {%- else -%}
+    "replay": "cookiecutter_replay/{{ cookiecutter._repo_dir.split('/')[-1] }}.json",
+    {%- endif %}
+    "patches": [
+      "patches/disable-install-step.patch"
+    ],
+    "nextPatches": [
+      "patches/disable-install-step.patch"
+    ]
+  }
+}
