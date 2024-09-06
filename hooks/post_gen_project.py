@@ -62,7 +62,7 @@ install_commands = [
     'yarn init -2',
     'git checkout package.json',
     'yarn set version 4',
-    'yarn plugin import https://mskelton.dev/yarn-outdated/v4',
+    'yarn plugin import https://go.mskelton.dev/yarn-outdated/v4',
     'yarn install',
     'yarn clean-install',
     'git add .yarn .yarnrc.yml package.json yarn.lock',
