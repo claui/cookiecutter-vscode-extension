@@ -2,7 +2,7 @@
   "name": "{{ cookiecutter.project_slug }}",
   "license": "SEE LICENSE IN README.md",
   "engines": {
-    "node": "^18.0.0"
+    "node": "^20.0.0"
   },
   "comments": {
     "devDependencies": {

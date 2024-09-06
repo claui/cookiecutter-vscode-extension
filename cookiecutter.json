@@ -4,7 +4,7 @@
   "project_slug": "vscode-{{ cookiecutter.extension_slug }}",
   "extension_description": "",
   "extension_license": ["Apache-2.0", "Proprietary"],
-  "vscode_engine_min_version_tuple": "1.77",
+  "vscode_engine_min_version_tuple": "1.92",
   "contribute_language": "y",
   "first_language_display_name": "{{ cookiecutter.extension_display_name }}",
   "first_language_slug": "{{ cookiecutter.first_language_display_name.lower().replace(' ', '-').replace('_', '-') }}",

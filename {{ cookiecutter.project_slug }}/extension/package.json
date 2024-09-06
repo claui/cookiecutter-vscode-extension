@@ -17,7 +17,7 @@
     "@js-temporal/polyfill": "^0.4.4"
   },
   "devDependencies": {
-    "@types/node": "<=18.x",
+    "@types/node": "<=20.x",
     "@types/vscode": "={{ cookiecutter.vscode_engine_min_version_tuple }}",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
