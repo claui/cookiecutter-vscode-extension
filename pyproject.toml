@@ -8,12 +8,14 @@ version = "0.1.0"
 description = "Cookiecutter template for generating Visual Studio Code extensions"
 authors = ["Claudia Pellegrino <clau@tiqua.de>"]
 license = "Apache-2.0"
+package-mode = false
 
 [tool.poetry.dependencies]
 # We’re pinning Python to an exact minor version for compatibility.
 # Keep this number in sync with the minimum Python version
-# Cookiecutter supports.
-python = "~3.7.0"
+# Cookiecutter supports, or slightly higher if some development
+# dependency (such as Poetry v1.8.3) requires it.
+python = "~3.8.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.6.0"
